@@ -47,3 +47,97 @@
 }
 
 ```
+
+#### 2. 区别IE6、IE7、IE8、FF
+
+```
+
+#demo {
+  background: blue;/*FF下为蓝色*/
+  background: red\9;/*IE8下为红色*/
+  *background: black;/*IE7下为黑色*/
+  _background: orange;/*IE6下为橘色*/
+}
+
+```
+
+【说明】：因为IE系列浏览器可读「\9」，而IE6和IE7可读「*」(米字号)，另外IE6可辨识「_」(底线)，因此可以依照顺序写下来，就会让浏览器正确的读取到自己看得懂得CSS语法，所以就可以有效区分IE各版本和非IE浏览器(像是Firefox、Opera、GoogleChrome、Safari等)。
+
+#### 3. 区别IE6、IE7、FF
+
+```
+
+#demo {                                                                         
+  background: blue;/*FF下为蓝色*/                                               
+  *background: black;/*IE7下为黑色*/                                            
+  _background: orange;/*IE6下为橘色*/                                           
+} 
+
+```
+
+【说明】：IE7和IE6可读「*」(米字号)，IE6又可以读「_」(底线)，但是IE7却无法读取「_」，至于Firefox(非IE浏览器)则完全无法辨识「*」和「_」，因此就可以透过这样的差异性来区分IE6、IE7、Firefox
+
+#### 4. 区别IE6、IE7、FF  
+
+```
+
+#demo {·········································································
+  background: blue;/*FF下为蓝色*/···············································
+  *background: black !important;/*IE7下为黑色*/
+  *background: orange;/*IE6下为橘色*/···········································
+}
+
+```
+
+【说明】：IE7可以辨识「*」和「!important」，但是IE6只可以辨识「*」，却无法辨识「!important」，至于Firefox可以读取「!important」但不能辨识「*」因此可以透过这样的差异来有效区隔IE6、IE7、Firefox。
+
+
+#### 5. 区别IE7、Firefox
+
+```
+
+#demo {  
+  background:blue;/*FF下为蓝色*/  
+  *background:green!important;/*IE7下为绿色*/  
+}
+
+```
+
+【说明】：因为Firefox可以辨识「!important」但却无法辨识「*」，而IE7则可以同时看懂「*」、「!important」，因此可以两个辨识符号来区隔IE7和Firefox。
+
+
+#### 6. 区别IE6、IE7
+
+```
+#demo {
+  *background:black;/*IE7下为黑色*/  
+  _background:orange;/*IE6下为橘色*/  
+}
+```
+
+说明】：IE7和IE6都可以辨识「*」(米字号)，但IE6可以辨识「_」(底线)，IE7却无法辨识，透过IE7无法读取「_」的特性就能轻鬆区隔IE6和IE7之间的差异。
+
+#### 7. 区别IE6、IE7 
+
+```
+#demo {  
+  background:black!important;/*IE7下为黑色*/  
+  background:orange;/*IE6下为橘色*/  
+} 
+
+```
+
+【说明】：因为IE7可读取「!important;」但IE6却不行，而CSS的读取步骤是从上到下，因此IE6读取时因无法辨识「!important」而直接跳到下一行读取CSS，所以背景色会呈现橘色。
+
+#### 8. 区别IE6、Firefox
+
+```
+
+#demo {  
+  background:black;/*FF下为黑色*/  
+  _background:orange;/*IE6下为橘色*/  
+}
+
+```
+
+说明】：因为IE6可以辨识「_」(底线)，但是Firefox却不行，因此可以透过这样的差异来区隔Firefox和IE6，有效达成CSShack。
